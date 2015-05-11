@@ -15,13 +15,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-/**
- * Pretty-prints xml, supplied as a string.
- * <p/>
- * eg.  <code>
- * String formattedXml = new XmlFormatter().format("<tag><nested>hello</nested></tag>");
- * </code>
- */
+
 @SuppressWarnings("deprecation")
 public class XmlFormatter
 {

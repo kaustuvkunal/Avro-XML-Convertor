@@ -9,7 +9,7 @@
     </prerequisites>
     <build>
 		
-        <plugins>
+         <plugins>
 		 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -28,7 +28,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.affle.avro.AvroToXMLConvertor </mainClass>
+                            <mainClass>com.kk.avrotoxml.AvroToXMLConvertor </mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
