@@ -1,5 +1,6 @@
 package com.kk.avrotoxml;
 
+import org.apache.log4j.Logger;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
@@ -15,10 +16,11 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-
 @SuppressWarnings("deprecation")
 public class XmlFormatter
 {
+
+    private static Logger log = Logger.getLogger(XmlFormatter.class);
 
     public XmlFormatter()
     {
@@ -46,16 +48,19 @@ public class XmlFormatter
             InputSource is = new InputSource(new StringReader(in));
             return db.parse(is);
         }
-        catch(ParserConfigurationException e)
+        catch (ParserConfigurationException e)
         {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
-        catch(SAXException e)
+        catch (SAXException e)
         {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
-        catch(IOException e)
+        catch (IOException e)
         {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }

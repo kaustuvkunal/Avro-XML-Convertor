@@ -4,20 +4,21 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
-
 import org.json.JSONArray;
 import org.json.XML;
+import org.apache.log4j.Logger;
 
 public class AvroToXMLConvertor
 {
+    private static Logger log = Logger.getLogger(AvroToXMLConvertor.class);
 
     public static void main(String[] args) throws IOException
     {
         if (args.length != 2)
         {
-            System.out.println(" Invalid argument usage ");
-            System.out
-                    .println(" Correct usage (2 arguments) :  AvroinputFile  XMLOutput File ");
+            log.error(" Invalid argument usage ");
+            log.info(
+                    " Correct usage (2 arguments) :  AvroinputFile  XMLOutput File ");
             System.exit(1);
 
         }
@@ -68,14 +69,14 @@ public class AvroToXMLConvertor
         JSONArray json = new JSONArray(word);
         String xmlstring = XML.toString(json);
 
-        System.out.println(" XML  version ");
+        log.info(" XML  version ");
         xmlstring = xmlstring.replace("fields", "field");
         xmlstring = xmlstring.replace("<array>", "");
         xmlstring = xmlstring.replace("</array>", "");
         xmlstring = "<fieldslist>" + xmlstring + "</fieldslist>";
 
         String formattedXml = new XmlFormatter().format(xmlstring);
-        System.out.println(formattedXml);
+        log.info(formattedXml);
         FileWriter fw = new FileWriter(outputpath);
 
         fw.write(xmlstring);
